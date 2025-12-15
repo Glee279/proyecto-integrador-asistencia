@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:8080
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzY1NjE2MTAxLCJleHAiOjE3NjU2MTk3MDF9.zhIZTEpWmMnk6R31nUcLdZD80MQxFQyJMtgQLkBOua0
+
+### CREAR SEDE
+POST {{baseUrl}}/sedes
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "nombre": "SEDE NORTE",
+    "direccion": "Av. ROTONDA 345"
+}
+
+### LISTAR SEDES
+GET {{baseUrl}}/sedes
+Authorization: {{TOKEN}}
+
+### CAMBIAR ESTADO DE SEDE
+PATCH {{baseUrl}}/sedes/13/estado
+Authorization: {{TOKEN}}

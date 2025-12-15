@@ -1,0 +1,26 @@
+@baseUrl = http://localhost:8080
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzY1NjAyNTMyLCJleHAiOjE3NjU2MDYxMzJ9.e-HHI9DlPJVlPTJD6JFXnvgfgsYo4g0j7kG1GnEcz54
+
+@VALIDAR = BKiyCbXMUqQdVpsqFAfiAAFByTIBMEOmRShkjhfuJDPcOZxcQJOxgUSzeqzOflzmJxNFXYkODvKPZDePdXysZhmwJgyPTfgTAchlxirTFYMFYxPINyHFSmiTeMUqEQhEXrAXlViiwKxxeCEXfGUlSOmfpBbCyYYcQNcKSyrKJFCwomrJSocXeUkMtcZkuHLMYaIwAwho
+
+### GENERAR QR
+POST {{baseUrl}}/qr-tokens
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "idSede": 13,
+    "minutos": 5
+}
+
+### VALIDAR QR
+GET {{baseUrl}}/qr-tokens/validar/{{VALIDAR}}
+Authorization: {{TOKEN}}
+
+### EXPIRAR QR
+PATCH {{baseUrl}}/qr-tokens/10/expirar
+Authorization: {{TOKEN}}
+
+### OBTENER QR ACTIVO DE SEDE
+GET {{baseUrl}}/qr-tokens/activo?idSede=13
+Authorization: {{TOKEN}}

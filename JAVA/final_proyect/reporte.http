@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:8080
+
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzY1NjE2MTAxLCJleHAiOjE3NjU2MTk3MDF9.zhIZTEpWmMnk6R31nUcLdZD80MQxFQyJMtgQLkBOua0
+
+### REPORTE ASISTENCIA - GENERAL
+GET {{baseUrl}}/reportes/fechas?tipo=ASISTENCIA&fecIni=2025-12-01&fecFin=2025-12-31
+Authorization: {{TOKEN}}
+
+### REPORTE ASISTENCIA - EMPLEADO
+GET {{baseUrl}}/reportes/fechas?tipo=ASISTENCIA&idUsuario=1&fecIni=2025-12-01&fecFin=2025-12-31
+Authorization: {{TOKEN}}
+
+### REPORTE ASISTENCIA - SEDE
+GET {{baseUrl}}/reportes/fechas?tipo=ASISTENCIA&idSede=13&fecIni=2025-12-01&fecFin=2025-12-31
+Authorization: {{TOKEN}}
+
+### REPORTE PUNTUALIDAD
+GET {{baseUrl}}/reportes/fechas?tipo=PUNTUALIDAD&idUsuario=3&fecIni=2025-12-01&fecFin=2025-12-31
+Authorization: {{TOKEN}}

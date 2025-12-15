@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:8080
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwibW9kYWxpZGFkIjoiUFJFU0VOQ0lBTCIsImlhdCI6MTc2NTY3NDM2NiwiZXhwIjoxNzY1Njc3OTY2fQ.oMzI876lWn7s4LD-o39PU1aoG3z19TE9AwyG8CKC-NY
+
+### CREAR NUEVO ROL
+POST {{baseUrl}}/roles
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "nombre": "EMPLEADO"
+}
+
+### ASIGNAR ROL A USUARIO
+POST {{baseUrl}}/roles/asignar
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "idUsuario": 5,
+    "idRol": 2
+}
+
+### QUITAR ROL A USUARIO
+DELETE {{baseUrl}}/roles/quitar
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "idUsuario": 2,
+    "idRol": 1
+}
+
+### ACTUALIZAR ROL
+PUT {{baseUrl}}/roles/1
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "nombre": "ADMIN"
+}
+
+### MODIFICAR ESTADO DEL ROL
+PATCH {{baseUrl}}/roles/1/estado
+Authorization: {{TOKEN}}
+
+### LISTAR ROLES
+GET {{baseUrl}}/roles
+Authorization: {{TOKEN}}
+
+### LISTAR ROLES POR USUARIO
+GET {{baseUrl}}/roles/usuario/1
+Authorization: {{TOKEN}}

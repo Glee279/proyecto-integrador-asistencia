@@ -1,0 +1,63 @@
+@baseUrl = http://localhost:8080
+
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqbWFydMOtbmV6ciIsImlkVXN1YXJpbyI6Mywicm9sZXMiOlsiRU1QTEVBRE8iXSwibW9kYWxpZGFkIjoiUkVNT1RPIiwiaWF0IjoxNzY1NzY1ODkxLCJleHAiOjE3NjU3Njk0OTF9.G5ox58PqGIvVyONcpEquQdQrI7wNjDzAMCZO1lMaje4
+
+@CODIGOQR = QcJoEsAdFiipGBscNouxPyObbFlhoyFhUpYQHidrasKAFojDuojVxGSshuWsrFKZXGGOkWUohFyUmxfWtVDlFXZCjuIzooRxzROpKDrbtipkEyObQZexdkcHBPNYKmlgWNJxBXxmDsWKWneAUnxRYuFBgcNVpdIPvziGVLNUSAIzXGHWCKpjgriCpXTrBFBzsEQrzrUm
+
+### MARCAR ASISTENCIA MANUAL
+POST {{baseUrl}}/asistencia/check-in
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "tipo": "MANUAL"
+}
+
+### MARCAR ASISTENCIA QR
+POST {{baseUrl}}/asistencia/check-in
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "tipo": "QR",
+    "codigoQr": "{{CODIGOQR}}"
+}
+
+### MARCAR SALIDA MANUAL
+POST {{baseUrl}}/asistencia/check-out
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "tipo": "MANUAL"
+}
+
+### MARCAR SALIDA QR
+POST {{baseUrl}}/asistencia/check-out
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "tipo": "QR",
+    "codigoQr": "{{CODIGOQR}}"
+}
+
+### VER HISTORIAL
+GET {{baseUrl}}/asistencia/historial
+Authorization: {{TOKEN}}
+
+### VER ESTADO DE LA ASISTENCIA DEL DIA
+GET {{baseUrl}}/asistencia/estadohoy
+Authorization: {{TOKEN}}
+
+### VER HISTORIAL PROPIO POR FECHAS
+GET /asistencia/historial/propio?fechaInicio=2025-01-01&fechaFin=2025-01-31
+Authorization: {{TOKEN}}
+
+### VER HISTORIAL GENERAL POR FECHAS
+GET /asistencia/historial/admin?idUsuario=1&fechaInicio=2025-01-01&fechaFin=2025-01-31
+Authorization: {{TOKEN}}
+
+### OBTENER QR ACTIVO DE SEDE
+GET {{baseUrl}}/qr-tokens/activo?idSede=13
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzY1Njc3MDE4LCJleHAiOjE3NjU2ODA2MTh9.I_urvVKQVAt0PbdlvOFdMJ0XhnqUaTO40ba1RoeS500

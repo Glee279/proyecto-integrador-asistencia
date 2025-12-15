@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:8080
+
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNzY1NjA5OTg3LCJleHAiOjE3NjU2MTM1ODd9.gs6ASjMV98tVwTixZknthde3UrqiYIjaVlhuKgqjReI
+
+### CREAR JUSTIFICACION
+POST {{baseUrl}}/justificaciones
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "idUsuario": 3,
+    "titulo": "Tardanza por tráfico 2",
+    "descripcion": "Accidente en la vía principal 2",
+    "fecEvento": "2025-12-12",
+    "tipJustificacion": "T",
+    "archivoUrl": "https://docs.com/prueba2.pdf"
+}
+
+### LISTAR JUSTIFICACIONES
+GET {{baseUrl}}/justificaciones?idUsuario=3&fecIni=2025-12-01&fecFin=2025-12-31
+Authorization: {{TOKEN}}
+
+### REVISAR JUSTIFICACION (ADMIN)
+PUT {{baseUrl}}/justificaciones/revision
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "idJustificacion": 1,
+    "idRevision": 1,
+    "estado": "A",
+    "comentario": "Justificación válida"
+}

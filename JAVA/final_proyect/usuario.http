@@ -1,0 +1,95 @@
+@baseUrl = http://localhost:8080
+@TOKEN = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRtaW5zIiwicm9sZXMiOlsiQURNSU4iXSwibW9kYWxpZGFkIjoiUFJFU0VOQ0lBTCIsImlhdCI6MTc2NTY3NDE4NCwiZXhwIjoxNzY1Njc3Nzg0fQ.v5sXlEvvxLUlxGJJ3GUlyWw_z2tqCSzAroaG05VRC9M
+
+### CREAR USUARIO
+POST {{baseUrl}}/usuarios
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "priNombre": "Kenyi",
+    "segNombre": "Leandro",
+    "apelPat": "Medina",
+    "apelMat": "Mejia",
+    "dni": "75248630",
+    "telefono": "999815910",
+    "direccion": "Av Palmeras 512",
+    "correoPer": "leandro1222@gmail.com",
+    "area": "TI",
+    "modalidad": "REMOTO",
+    "horaIni": "08:30",
+    "horaFin": "17:30"
+}
+
+### ACTUALIZAR USUARIO (SIN REGENERAR)
+PUT {{baseUrl}}/usuarios/3
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "area": "SISTEMAS",
+    "modalidad": "REMOTO",
+    "horaIni": "09:00",
+    "horaFin": "18:00",
+    "apelPat": "Perez",
+    "apelMat": "Gomez",
+    "priNombre": "Pedro",
+    "segNombre": "Luis",
+    "dni": "00000003",
+    "telefono": "999111222",
+    "direccion": "Av Peru 456",
+    "correoPer": "pedro@gmail.com",
+    "regenerarUsuario": false
+}
+
+### ACTUALIZAR USUARIO (REGENERAR USER)
+PUT {{baseUrl}}/usuarios/3
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "area": "SISTEMAS",
+    "modalidad": "PRESENCIAL",
+    "horaIni": "08:00",
+    "horaFin": "17:00",
+    "apelPat": "Ramirez",
+    "apelMat": "Lopez",
+    "priNombre": "Pedro",
+    "segNombre": "Carlos",
+    "dni": "00000004",
+    "telefono": "999111222",
+    "direccion": "Av Lima 999",
+    "correoPer": "pedro@gmail.com",
+    "regenerarUsuario": true
+}
+
+### OBTENER MI PERFIL
+GET {{baseUrl}}/usuarios/me
+Authorization: {{TOKEN}}
+
+### CAMBIAR PASSWORD
+PUT {{baseUrl}}/usuarios/cambiar-password
+Authorization: {{TOKEN}}
+Content-Type: application/json
+
+{
+    "passwordActual": "A94UFB4VM3",
+    "passwordNueva": "123456"
+}
+
+### RESET PASSWORD
+PUT {{baseUrl}}/usuarios/2/reset-password
+Authorization: {{TOKEN}}
+
+### CAMBIAR ESTADO USUARIO
+PUT {{baseUrl}}/usuarios/1/estado
+Authorization: {{TOKEN}}
+
+### LISTAR USUARIOS
+GET {{baseUrl}}/usuarios
+Authorization: {{TOKEN}}
+
+### BUSCAR USUARIO POR TEXTO
+GET {{baseUrl}}/usuarios/buscar?texto=p
+Authorization: {{TOKEN}}
+
