@@ -1,0 +1,73 @@
+<h1>Dashboard</h1>
+
+<!-- EMPLEADO -->
+<section *ngIf="isEmpleado()" class="grid">
+  <div class="card">
+    <h3>Asistencias del mes</h3>
+    <p class="value">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Puntualidad</h3>
+    <p class="value">-- %</p>
+  </div>
+
+  <div class="card">
+    <h3>Último registro</h3>
+    <p>--</p>
+  </div>
+
+  <div style="width: 400px; margin-top: 40px;">
+    <google-chart [type]="pieChartType" [data]="asistenciaVsFaltasData" [columns]="asistenciaVsFaltasColumns"
+      [options]="pieChartOptions">
+    </google-chart>
+  </div>
+
+</section>
+
+<!-- ADMIN -->
+<section *ngIf="isAdmin()" class="grid">
+
+  <div class="card">
+    <h3>Asistencias hoy</h3>
+    <p class="value">{{ totalAsistencias }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Empleados activos</h3>
+    <p class="value">20</p>
+  </div>
+
+  <div class="card">
+    <h3>Justificaciones pendientes</h3>
+    <p class="value">--</p>
+  </div>
+
+  <div class="card">
+    <h3>Puntualidad general</h3>
+    <p class="value">{{ porcentajePuntualidad }}%</p>
+  </div>
+
+  <!-- ASISTENCIAS MENSUALES -->
+  <div class="chart">
+    <h3>Asistencias mensuales</h3>
+    <google-chart
+      [type]="barChartType"
+      [columns]="barChartColumns"
+      [data]="barChartData"
+      [options]="barChartOptions">
+    </google-chart>
+  </div>
+
+  <!-- ASISTENCIAS vs FALTAS -->
+  <div class="chart">
+    <h3>Asistencias vs Faltas</h3>
+    <google-chart
+      [type]="pieChartType"
+      [columns]="asistenciaVsFaltasColumns"
+      [data]="asistenciaVsFaltasData"
+      [options]="pieChartOptions">
+    </google-chart>
+  </div>
+
+</section>

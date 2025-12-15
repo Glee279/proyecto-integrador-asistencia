@@ -1,0 +1,31 @@
+<h1>Registro de Asistencia</h1>
+
+<!-- REMOTO + DESKTOP -->
+<div *ngIf="modalidad === 'REMOTO' && !isMobile">
+
+    <div *ngIf="estado === 'SIN_MARCAR'">
+        <button (click)="marcarEntradaManual()" [disabled]="loading">
+            Check-in
+        </button>
+    </div>
+
+    <div *ngIf="estado === 'ENTRADA'">
+        <button (click)="marcarSalidaManual()" [disabled]="loading">
+            Check-out
+        </button>
+    </div>
+
+</div>
+
+<!-- PRESENCIAL o MOBILE -->
+<div *ngIf="modalidad === 'PRESENCIAL' && canUseQR || isMobile || modalidad === 'REMOTO' && estado !== 'SALIDA'">
+    <p>📱 Usa el lector QR para registrar tu asistencia</p>
+
+    <button>
+        Escanear QR
+    </button>
+</div>
+
+<div *ngIf="estado === 'SALIDA'">
+    <p>Asistencia completada ✅</p>
+</div>

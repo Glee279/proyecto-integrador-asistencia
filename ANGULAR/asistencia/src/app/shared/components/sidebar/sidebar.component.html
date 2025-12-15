@@ -1,0 +1,35 @@
+<button class="menu-btn" (click)="toggle()">☰</button>
+
+<div class="overlay" *ngIf="isOpen" (click)="close()"></div>
+<aside class="sidebar" [class.open]="isOpen">
+    <h2 class="logo">ASISTENCIA</h2>
+
+    <nav>
+        <!-- COMÚN -->
+        <a routerLink="/" routerLinkActive="active"> Dashboard </a>
+
+        <!-- EMPLEADO -->
+        <ng-container *ngIf="isEmpleado()">
+            <a routerLink="/asistencia"> Check-in / Check-out </a>
+
+            <a routerLink="/historial"> Historial </a>
+
+            <a routerLink="/justificaciones"> Solicitar justificación </a>
+        </ng-container>
+
+        <!-- ADMIN -->
+        <ng-container *ngIf="isAdmin()">
+            <a routerLink="/qr"> Modo QR </a>
+
+            <a routerLink="/historial"> Historial general </a>
+
+            <a routerLink="/reportes"> Reportes </a>
+
+            <a routerLink="/gestion"> Gestión </a>
+
+            <a routerLink="/administracion"> Administración </a>
+        </ng-container>
+    </nav>
+
+    <button class="logout" (click)="logout()">Cerrar sesión</button>
+</aside>

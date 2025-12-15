@@ -1,0 +1,19 @@
+<form [formGroup]="formJustificacion" (ngSubmit)="enviar()">
+    <input formControlName="titulo" placeholder="Título">
+    <textarea formControlName="descripcion"></textarea>
+    <input type="date" formControlName="fecEvento">
+    <select formControlName="tipJustificacion">
+        <option value="T">Tardanza</option>
+        <option value="A">Ausencia</option>
+    </select>
+    <input formControlName="archivoUrl" placeholder="URL archivo">
+    <button type="submit">Enviar</button>
+</form>
+
+<table class="tabla">
+    <tr *ngFor="let j of justificaciones">
+        <td>{{ j.fecEvento | date }}</td>
+        <td>{{ j.tipJustificacion }}</td>
+        <td>{{ j.estado }}</td>
+    </tr>
+</table>

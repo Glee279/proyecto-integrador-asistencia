@@ -1,0 +1,55 @@
+<section *ngIf="isEmpleado()" class="grid">
+  <h2>Mi Historial de Asistencia</h2>
+</section>
+
+<section *ngIf="isAdmin()" class="grid">
+  <h2>Historial de Asistencia</h2>
+</section>
+<div class="filters">
+  <div class="filter-item">
+    <label>Desde</label>
+    <input type="date" [(ngModel)]="fechaInicio">
+  </div>
+
+  <div class="filter-item">
+    <label>Hasta</label>
+    <input type="date" [(ngModel)]="fechaFin">
+  </div>
+  <div class="filter-item" *ngIf="isAdmin()">
+    <label>ID Usuario (Opcional)</label>
+    <input type="number" [(ngModel)]="idUsuario" placeholder="Todos si está vacío">
+  </div>
+  <button class="btn-search" (click)="buscar()">
+    Buscar
+  </button>
+</div>
+
+<section *ngIf="isAdmin()" class="grid">
+  <table *ngIf="historial.length > 0">
+    <tr>
+      <th>Entrada</th>
+      <th>Salida</th>
+    </tr>
+    <tr *ngFor="let a of historial">
+      <td>{{ a.fecEntrada | date:'short' }}</td>
+      <td>{{ a.fecSalida | date:'short' }}</td>
+    </tr>
+  </table>
+
+  <p *ngIf="historial.length === 0">Sin registros</p>
+</section>
+
+<section *ngIf="isEmpleado()" class="grid">
+  <table *ngIf="historial.length > 0">
+    <tr>
+      <th>Entrada</th>
+      <th>Salida</th>
+    </tr>
+    <tr *ngFor="let a of historial">
+      <td>{{ a.fecEntrada | date:'short' }}</td>
+      <td>{{ a.fecSalida | date:'short' }}</td>
+    </tr>
+  </table>
+
+  <p *ngIf="historial.length === 0">Sin registros</p>
+</section>

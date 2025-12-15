@@ -1,0 +1,68 @@
+<div class="gestion-justificaciones-container">
+
+<h2>Gestión de Justificaciones</h2>
+
+<form [formGroup]="formFiltros" (ngSubmit)="buscar()" class="filtros">
+  <input type="date" formControlName="fecIni">
+  <input type="date" formControlName="fecFin">
+
+  <input type="number" placeholder="ID Usuario" formControlName="idUsuario">
+
+  <select formControlName="estado">
+    <option value="">Todos</option>
+    <option value="P">Pendiente</option>
+    <option value="A">Aceptado</option>
+    <option value="R">Rechazado</option>
+  </select>
+
+  <button type="submit">Buscar</button>
+</form>
+
+<table class="tabla">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Usuario</th>
+      <th>Fecha</th>
+      <th>Tipo</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let j of justificaciones">
+      <td>{{ j.idJustificacion }}</td>
+      <td>{{ j.idUsuario }}</td>
+      <td>{{ j.fecEvento | date }}</td>
+      <td>{{ j.tipJustificacion }}</td>
+      <td>
+        <span class="estado" [ngClass]="j.estado">{{ j.estado }}</span>
+      </td>
+      <td>
+        <button *ngIf="j.estado === 'P'" (click)="abrirRevision(j)">📝</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="revisionVisible" class="modal">
+  <h3>Revisar Justificación</h3>
+
+  <form [formGroup]="formRevision" (ngSubmit)="enviarRevision()">
+    <select formControlName="estado">
+      <option value="">Seleccione</option>
+      <option value="A">Aceptar</option>
+      <option value="R">Rechazar</option>
+    </select>
+
+    <textarea formControlName="comentario"
+              placeholder="Comentario obligatorio"></textarea>
+
+    <button type="submit">Confirmar</button>
+    <button type="button" (click)="revisionVisible=false">Cancelar</button>
+  </form>
+</div>
+
+    
+    </div>

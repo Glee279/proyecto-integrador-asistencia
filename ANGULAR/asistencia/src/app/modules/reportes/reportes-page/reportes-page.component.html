@@ -1,0 +1,52 @@
+<h2>Reportes Administrativo</h2>
+
+<div class="filters">
+    <div class="filter-item">
+        <label>Desde</label>
+        <input type="date" [(ngModel)]="fecIni">
+    </div>
+
+    <div class="filter-item">
+        <label>Hasta</label>
+        <input type="date" [(ngModel)]="fecFin">
+    </div>
+
+    <div class="filter-item">
+        <label>Sede</label>
+        <select [(ngModel)]="idSedeSeleccionada">
+            <option [ngValue]="null">Todas</option>
+            <option *ngFor="let s of sedes" [ngValue]="s.idSede">
+                {{ s.nombre }}
+            </option>
+        </select>
+    </div>
+
+    <button class="btn-search" (click)="buscar()">
+        Buscar
+    </button>
+
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>Total Asistencias</h3>
+        <p>{{ totalAsistencias }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Tardanzas</h3>
+        <p>{{ totalTardanzas }}</p>
+    </div>
+</div>
+
+<div style="width: 600px;">
+    <google-chart [type]="barChartType" [data]="barChartData" [columns]="barChartColumns" [options]="barChartOptions">
+    </google-chart>
+
+    <div style="width: 400px; margin-bottom: 40px;">
+        <google-chart [type]="pieChartType" [data]="pieChartData" [columns]="pieChartColumns"
+            [options]="pieChartOptions">
+        </google-chart>
+    </div>
+
+</div>

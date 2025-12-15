@@ -1,0 +1,117 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 32px;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+
+form {
+  max-width: 520px;
+  margin: 0 auto 32px auto;
+  padding: 28px 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #dcdfe6;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fff;
+}
+
+form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #3f8cff;
+  box-shadow: 0 0 0 2px rgba(63, 140, 255, 0.2);
+}
+
+form button {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: #3f8cff;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+form button:hover {
+  background: #2f74d0;
+}
+
+form button:active {
+  transform: scale(0.98);
+}
+
+
+.tabla {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+.tabla tr {
+  border-top: 1px solid #e6e9f0;
+}
+
+.tabla tr:first-child {
+  border-top: none;
+}
+
+.tabla td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.tabla tr:hover {
+  background: #f9fbff;
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding: 20px;
+  }
+
+  form {
+    padding: 24px 20px;
+  }
+
+  .tabla td {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
